@@ -4,21 +4,41 @@ namespace Employment\Validator;
 
 use Laminas\Validator\AbstractValidator;
 
+/**
+ * Custom validator for INN validation
+ */
 class INN extends AbstractValidator
 {
+    /**
+     * Constants for generating error messages
+     */
     const FORMAT = 'format';
     const LENGTH = 'length';
     const DIGIT = 'digit';
+
+    /**
+     * Digits coefficients for format cheking
+     */
     const COEFFICIENTS_10 = [2, 4, 10, 3, 5, 9, 4, 6, 8];
     const COEFFICIENTS_11 = [7, 2, 4, 10, 3, 5, 9, 4, 6, 8];
     const COEFFICIENTS_12 = [3, 7, 2, 4, 10, 3, 5, 9, 4, 6, 8];
 
+    /**
+     * Error messages templates
+     */
     protected $messageTemplates = [
         self::FORMAT => "INN value '%value%' is invalid",
         self::LENGTH => "INN value '%value%' must be 10 or 12 characters long",
         self::DIGIT => "INN value '%value%' must contain only digits"
     ];
 
+    /**
+     * Validates INN value
+     *
+     * @param mixed $value INN value
+     *
+     * @return bool returns TRUE if INN value is valid, else returns FALSE
+     */
     public function isValid($value)
     {
         $this->setValue($value);

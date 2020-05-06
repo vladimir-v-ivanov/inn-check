@@ -4,8 +4,18 @@ namespace Employment\Form;
 
 use Laminas\Form\Form;
 
+/**
+ * INN cheking form
+ */
 class EmploymentForm extends Form
 {
+    /**
+     * Constructor
+     *
+     * Argument $name will be ignored
+     *
+     * @param string|null $name name of the form
+     */
     public function __construct($name = null)
     {
         parent::__construct('inn_check');

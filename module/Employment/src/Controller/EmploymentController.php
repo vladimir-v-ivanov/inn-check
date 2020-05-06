@@ -12,17 +12,31 @@ use Laminas\Mvc\Controller\AbstractActionController;
 use \RuntimeException;
 use \DomainException;
 
+/**
+ * Employment controller
+ */
 class EmploymentController extends AbstractActionController
 {
     private $table;
     private $apiClient;
 
+    /**
+     * Constructor
+     *
+     * @param EmploymentTable $table employment table model
+     * @param APIClient $apiClient remote HTTP API client model
+     */
     public function __construct(EmploymentTable $table, APIClient $apiClient)
     {
         $this->table = $table;
         $this->apiClient = $apiClient;
     }
 
+    /**
+     * Action for INN checking form and request processing
+     *
+     * @return array view data
+     */
     public function checkAction()
     {
         $form = new EmploymentForm;
@@ -72,6 +86,11 @@ class EmploymentController extends AbstractActionController
         ]);
     }
 
+    /**
+     * Action for INN check result
+     *
+     * @return array view data
+     */
     public function resultAction()
     {
         $employment = $this->table->getItem((int) $this->params()->fromRoute('inn', 0));
@@ -85,6 +104,11 @@ class EmploymentController extends AbstractActionController
         ];
     }
 
+    /**
+     * Action for displaying any unexpected error
+     *
+     * @return null
+     */
     public function errorAction()
     {
         return;

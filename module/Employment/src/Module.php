@@ -8,18 +8,36 @@ use Laminas\Db\TableGateway\TableGateway;
 use Laminas\ModuleManager\Feature\ConfigProviderInterface;
 use Laminas\Http;
 
+/**
+ * Modile config provider
+ */
 class Module implements ConfigProviderInterface
 {
+    /**
+     * Returns main config of the module
+     *
+     * @return array config of the module
+     */
     public function getConfig()
     {
         return include __DIR__ . '/../config/module.config.php';
     }
 
+    /**
+     * Returns remote API connection config
+     *
+     * @return array config for API connection
+     */
     public function getAPIConfig()
     {
         return include __DIR__ . '/../config/api.config.php';
     }
 
+    /**
+     * Returns services config
+     *
+     * @return array services config
+     */
     public function getServiceConfig()
     {
         return [
@@ -59,6 +77,11 @@ class Module implements ConfigProviderInterface
         ];
     }
 
+    /**
+     * Returns controllers config of the module
+     *
+     * @return array controllers config
+     */
     public function getControllerConfig()
     {
         return [

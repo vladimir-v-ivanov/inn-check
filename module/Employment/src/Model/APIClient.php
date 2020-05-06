@@ -9,15 +9,34 @@ use Laminas\Http\{
 use \RuntimeException;
 use \DomainException;
 
+/**
+ * Client model for remote HTTP API
+ */
 class APIClient
 {
     private $client;
 
+    /**
+     * Constructor
+     *
+     * @param Client $client native Laminas HTTP client
+     */
     public function __construct(Client $client)
     {
         $this->client = $client;
     }
 
+    /**
+     * Retreive employment status from remote API
+     *
+     * @param int $inn INN of employee
+     *
+     * @return bool returns TRUE if employee is self-employed, otherwise returns FALSE
+     *
+     * @throws DomainException if some API error occurs
+     *
+     * @throws RuntimeException if some error occurs during HTTP request
+     */
     public function getEmploymentStatus(int $inn): bool
     {
         $status = false;

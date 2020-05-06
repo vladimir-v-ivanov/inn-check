@@ -10,12 +10,20 @@ use Laminas\InputFilter\{
 };
 use Employment\Validator\INN;
 
+/**
+ * Employment model
+ */
 class Employment implements InputFilterAwareInterface
 {
     public $inn;
     public $updated_at;
     public $status;
 
+    /**
+     * Fill model properties from array
+     *
+     * @param array $data array of data where keys is properties names
+     */
     public function exchangeArray(array $data)
     {
         if(isset($data['inn'])) {
@@ -31,6 +39,13 @@ class Employment implements InputFilterAwareInterface
         }
     }
 
+    /**
+     * Sets input filter for model data validation
+     *
+     * @param InputFilterInterface $inputFilter input filter object with validation rules
+     *
+     * @throws DomainException
+     */
     public function setInputFilter(InputFilterInterface $inputFilter)
     {
         throw new DomainException(sprintf(
@@ -39,6 +54,11 @@ class Employment implements InputFilterAwareInterface
         ));
     }
 
+    /**
+     * Returns current input filter of the model
+     *
+     * @return InputFilterInterface input filter object with validation rules
+     */
     public function getInputFilter()
     {
         if($this->inputFilter) {
@@ -62,6 +82,11 @@ class Employment implements InputFilterAwareInterface
         return $this->inputFilter;
     }
 
+    /**
+     * Checks update status is required
+     *
+     * @return bool returns TRUE if update required, otherwise returns FALSE
+     */
     public function updateRequired(): bool
     {
         if(is_null($this->updated_at)) {
@@ -70,6 +95,7 @@ class Employment implements InputFilterAwareInterface
 
         $timestamp = strtotime($this->updated_at);
 
+        // TODO: hardcoded
         return $timestamp < time() - 24 * 60 * 60;
     }
 }
