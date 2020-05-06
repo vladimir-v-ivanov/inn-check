@@ -1,0 +1,10 @@
+<?php
+
+$title = 'INN check result';
+$this->headTitle($title);
+
+?>
+<h1><?= $this->escapeHtml($title); ?></h1>
+
+<p><?= $this->employment->status ? 'Self-employed' : 'Not self-employed'; ?></p>
+<p><a href="/public/inn/check">Check another INN</a></p>

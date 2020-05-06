@@ -1,0 +1,34 @@
+<?php
+
+$title = 'Check INN';
+$this->headTitle($title);
+
+?>
+<h1><?= $this->escapeHtml($title); ?></h1>
+<?php
+
+$form->setAttribute('action', $this->url('inn_check', ['action' => 'check']));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+?>
+<div class="row">
+    <div class="col-9">
+        <div class="form-group">
+            <?= $this->formRow($form->get('inn')); ?>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="from-group">
+            <?= $this->formRow($form->get('submit')); ?>
+        </div>
+    </div>
+    <?php if($this->error) { ?>
+    <div class="col">
+        <p><?= $this->error; ?></p>
+    </div>
+    <?php } ?>
+</div>
+<?php
+
+echo $this->form()->closeTag();
