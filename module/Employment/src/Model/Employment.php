@@ -95,7 +95,6 @@ class Employment implements InputFilterAwareInterface
 
         $timestamp = strtotime($this->updated_at);
 
-        // TODO: hardcoded
         return $timestamp < time() - 24 * 60 * 60;
     }
 }

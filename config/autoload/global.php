@@ -19,6 +19,6 @@ return [
         'user' => 'root',
         'password' => 'sss2019',
         'charset' => 'utf8',
-        'hostname' => 'test_db'
+        'hostname' => 'localhost'
     ],
 ];

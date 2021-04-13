@@ -44,5 +44,10 @@
         ],
         "serve": "php -S 0.0.0.0:8080 -t public",
         "test": "phpunit"
+    },
+    "require-dev": {
+        "laminas/laminas-test": "^3.4",
+        "phpunit/phpunit": "^9.5",
+        "phpspec/prophecy-phpunit": "^2.0"
     }
 }

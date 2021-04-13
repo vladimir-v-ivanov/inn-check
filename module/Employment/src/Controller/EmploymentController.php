@@ -96,7 +96,7 @@ class EmploymentController extends AbstractActionController
         $employment = $this->table->getItem((int) $this->params()->fromRoute('inn', 0));
 
         if(!$employment) {
-            $this->redirect()->toRoute('inn');
+            $this->redirect()->toRoute('inn_check');
         }
 
         return [
